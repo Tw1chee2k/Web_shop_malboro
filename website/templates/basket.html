@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}Корзина{% endblock %}
+
+{% block content %}
+<div style = "margin: 120px 0px 0px 0px; ">
+    <div class = "contbasket"> 
+        <div class = "OpisB1">
+            <h2 style = "padding: 5px;">Корзина</h2>
+                <hr style = "background: rgb(131, 131, 131); width: 100%;">
+                    <ul class="list-group">
+                    {% for item in items %}
+                        <li class="list-group-item" style="background: white;">
+                            <div style = "display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="{{ url_for('static', filename='img/' + item.tovar_name + '.jpg') }}" alt="{{ item.tovar_name }}" width="100">
+                                    <div class="ml-3" style="font-size: 16px; text-align:center; vertical-align: middle;">
+                                        <div>{{ item.tovar_name }}</div>
+                                        <div style = "padding-top: 11px;">({{ item.size }})size</div>
+                                        <input id="price-{{ item.id }}" type="text" value="{{ item.price }} руб." style="outline: none; background:rgb(216, 241, 255); color: black; border: black; width: 120px; height: 30px; text-align: center; margin-bottom: 0px; font-size: 16px; text-align: center; vertical-align: middle;" readonly>         
+                                      </div>
+                                </div>
+                                <div  style="text-align:center; vertical-align: middle; padding: 0">                       
+                                    <input id="kol-{{ item.id }}" type="text" value="{{ item.quantity }}" style="margin: 10px; background:rgb(216, 241, 255); color: black; border: white; width: 40px; height: 30px; text-align: center; font-size: 16px; text-align: center; vertical-align: middle;" readonly>         
+                                </div> 
+                                <div> 
+                                    <button type="button" style="margin: 0; padding: 0; color: black; background:rgb(216, 241, 255); border: 0 black; font-size: 30px; text-align: center; vertical-align: middle;" onClick="deleteItem({{ item.id }})">×</button>
+                                </div>
+                            </div>  
+                        </li>
+                        <hr style = "background: rgb(131, 131, 131);" >
+                    {% endfor %}
+                    </ul>      
+        </div>
+
+        <div class = "OpisB2">
+            <form method="POST">
+                <h2 style = "padding: 5px;">Оформление заказа</h2>
+                <br>
+                <p class = "mainT">Телефон</p>
+                    
+                <input 
+                    type="text"
+                    id="telephone"
+                    name="telephone"
+                    style = "background: white; color: black; border: 1px solid grey; height: 36px; width: 100%; padding: 0px 20px; font-size: 16px;"
+                    placeholder="Номер телефона"
+                /> 
+
+
+
+                <br>
+                <p class = "mainT">Получатель</p>
+                <input
+                    type="text"
+                    id="fio"
+                    name="fio" 
+                    style = "background: white; color: black; border: 1px solid grey; height: 36px; width: 100%; padding: 0px 20px; font-size: 16px;" 
+                    placeholder="Иванов Иван Иванович"
+                />       
+                
+                <p class = "mainT">Адрес</p>
+                    
+                <input
+                    type="text"
+                    id="city"
+                    name="city" 
+                    style = "background: white; color: black; border: 1px solid grey; height: 36px; width: 100%; padding: 0px 20px; font-size: 16px;"
+                    placeholder="Город"
+                />   
+                <input
+                    type="text"
+                    id="adress"
+                    name="adress" 
+                    style = "background: white; color: black; border: 1px solid grey; height: 36px; width: 100%; padding: 0px 20px; font-size: 16px;" 
+                    placeholder="Улица дом, квартира"
+                /> 
+        
+                <p class = "mainT">Комментарий</p>
+
+                <input
+                    type="text"
+                    id="coment"
+                    name="coment" 
+                    style = "background: white; color: black; border: 1px solid grey; height: 36px; width: 100%; padding: 0px 20px; font-size: 16px;" 
+                    placeholder="Комментарий к заказу"
+                />          
+        
+                    <p class = "mainT">Промокод</p>
+
+                <input
+                    type="text"
+                    id="promocod"
+                    name="promocod" 
+                    style = "background: white; color: black; border: 1px solid grey; height: 36px; width: 100%; padding: 0px 20px; font-size: 16px;" 
+                    placeholder="Введите промокод (если имеется)"
+                />          
+                
+                <p class = "mainT">Доставка</p>
+
+
+                <div class="contradio">
+                    <input type="radio" disabled>
+                    <div style="font-size: 16px;">Доставка по миру<span class = "inoeT"> от 7 дней 5 руб.</span></div>
+                </div>
+              
+                    <div class = "basketCostContener"> 
+                        <div>Сумма:                             
+                            {{basket_price}} руб.
+                        </div>
+                        <p>Доставка по миру: 5 руб.</p>
+                        <div>Итоговая сумма: {{all_basket_price}} руб.</div>
+                    </div>      
+                    
+                    {% for item in items %}
+                        <input type="hidden" id="obsh_price" name="obsh_price" value="{{ item.price }}">
+                        <input type="hidden" id="tovar_name" name="tovar_name" value="{{ item.tovar_name }}">
+                        <input type="hidden" id="tovar_quantity" name="tovar_quantity" value="{{ item.quantity }}">
+                    {% endfor %}
+
+                    <button type="submit" style="background-color: #28cbff; color: black; margin-bottom: 120px; font-size: 24px; border-radius: 0; border: 0px;  align-items: center; width: 100%; height: 50px;">Оформить заказ</button>
+            </form>  
+        </div>
+    </div>
+</div>  
+{% endblock %}
+

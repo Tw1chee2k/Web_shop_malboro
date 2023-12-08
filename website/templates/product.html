@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}{{tovar.name}}{% endblock %}
+
+{% block content %}
+
+    <div class="contProd" style="margin-top: 120px;">
+        <div class="imgPrCont">
+            <div class="scroll-container1">
+                <img style="margin: 25px 0 0 80px; border: 1px solid rgba(255, 255, 255, 0.26);
+                background: white;
+                backdrop-filter: blur(10px); box-shadow: -5px 5px 10px 10px rgba(156, 156, 156, 0.486);" 
+                     src="{{ url_for('static', filename='img/' + tovar.name + '.jpg') }}" 
+                     class="productIMG" alt="img">
+            </div>
+        </div>
+        <div class="Opis">
+            <h2>{{tovar.name}}</h2>
+            <p class="inoeT">{{tovar.type_of_decoration}}</p>
+            <br>
+            <hr style="background: rgb(131, 131, 131);">
+            <br>
+            <button onclick="changeCount(-1)" class="plus_minus_count">-</button>
+            <input id="countInput" type="text" value="1" style="  background-color: rgb(231, 241, 247);  color: black; border-radius: 0; border: 1.3px solid gray; width: 60px; height: 30px; text-align: center; margin-bottom: 0px;"
+    readonly>
+            <button onclick="changeCount(1)" class="plus_minus_count">+</button>
+            <br>
+            <br>
+                <div>
+                    <button class="size-button" onclick="selectSize(this)">15</button>
+                    <button class="size-button" onclick="selectSize(this)">15.5</button>
+                    <button class="size-button" onclick="selectSize(this)">16</button>
+                    <button class="size-button" onclick="selectSize(this)">16.5</button>
+                    <button class="size-button" onclick="selectSize(this)">17</button>
+                    <button class="size-button" onclick="selectSize(this)">17.5</button>
+                    <button class="size-button" onclick="selectSize(this)">18</button>
+                    <button class="size-button" onclick="selectSize(this)">18.5</button>
+                    <button class="size-button" onclick="selectSize(this)">19</button>
+                    <button class="size-button" onclick="selectSize(this)">19.5</button>
+                    <button class="size-button" onclick="selectSize(this)">20</button>
+                    <button class="size-button" onclick="selectSize(this)">20.5</button>
+                    <button class="size-button" onclick="selectSize(this)">21</button>
+                    <button class="size-button" onclick="selectSize(this)">21.5</button>
+                    <button class="size-button" onclick="selectSize(this)">22</button>
+                    <button class="size-button" onclick="selectSize(this)">22.5</button>
+                    <button class="size-button" onclick="selectSize(this)">23</button>
+                </div>
+            <br>
+            <p class="mainT">Описание</p>
+            <p class="inoeT">{{tovar.opisanie}}</p>
+
+            <p class="mainT">Характеристики</p>
+            <div><span class="inoeT">Материал</span> - {{tovar.material}}</div>
+            <br>
+            <form action="/add_to_basket" method="post">
+                <input type="hidden" name="selectedSizeInput" id="selectedSizeInput" value="">
+                <input type="hidden" name="tovar_name" value="{{ tovar.name }}">
+                <input type="hidden" name="count" id="countInputHidden" value="1">
+                <input type="hidden" name="total_cost" id="total_cost_input" value="{{ tovar.cost }}">
+
+                <button type="submit"
+                    style="background-color: #28cbff; color: black; padding: 10px; border-radius: 0; border: 0px; display: flex; justify-content: space-between; align-items: center; width: 100%; height: 50px;">
+                    <span style="margin-right: auto;">Добавить в корзину</span>
+                    <span id="total_cost">{{ tovar.cost }} руб.</span>
+                </button>
+            </form>
+        </div>
+    </div>
+    <script>
+        var count = 1;
+        var tovarCost = {{ tovar.cost }};
+
+        function changeCount(delta) {
+            var countInput = document.getElementById('countInput');
+            var countInputHidden = document.getElementById('countInputHidden');
+            var totalCostSpan = document.getElementById('total_cost');
+    
+            var currentCount = parseInt(countInput.value);
+            var newCount = currentCount + delta;
+    
+            if (newCount >= 1) {
+                countInput.value = newCount;
+                countInputHidden.value = newCount;
+    
+                var newTotalCost = newCount * tovarCost;
+                totalCostSpan.innerText = newTotalCost.toFixed(2) + ' руб.';
+            }
+        }
+
+        function selectSize(button) {
+            var buttons = document.querySelectorAll('.size-button');
+            buttons.forEach(function (btn) {
+                btn.classList.remove('selected');
+            });
+
+            button.classList.add('selected');
+            var selectedSizeInput = document.getElementById('selectedSizeInput');
+            selectedSizeInput.value = button.innerText;
+        }
+    </script>
+
+{% endblock %}

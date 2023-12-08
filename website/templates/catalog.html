@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Сайт для продажи украшений{% endblock %}
+{% block content %}
+    
+
+    <div id="blackContainer" style = "top: 120px;">
+      <div class="container mt-4 d-flex justify-content-center align-items-center">
+        <div id = "1" class="row" style = "justify-content: center;">
+
+
+          {% for tovar in tovar_list %}
+              <div class="tovar_box">
+                <div style = "text-align: center; ">
+                  <a href="{{ url_for('views.product', name=tovar.name) }}"> 
+                    <img style = "" src="{{ url_for('static', filename='img/' + tovar.name + '.jpg') }}" class="card-img-top productIMG" alt="{{ tovar.name }}">
+                  </a>
+              </div>
+            
+            <div style="padding: 13px 20px 10px 20px; color: black;">
+              <span>{{ tovar.name }} <span style = "background:#28cbff; color: black; font-size: 13px; padding: 0 3px 0 3px; margin: 0  0 0 10px">new</span> </span> 
+              <div>{{ tovar.cost }} руб.</div>
+            </div>
+          </div>
+      {% endfor %}
+
+
+        </div>
+      </div>
+    </div>
+{% endblock %}

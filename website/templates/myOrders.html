@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Заказы{% endblock %}
+{% block content %}
+<div class = "fon">
+    <div class="container">
+        {% for nomerzakaza, orders in order_dict.items() %}
+        <div class="card mb-3" style = "top: 120px;     background-color: rgba(255, 255, 255, 0.26);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border: 0;">
+            <div class="card-header text-center" >
+                <h2 class="card-title">Заказ #{{ nomerzakaza }}</h2>
+                <p class="card-price">Общая цена: {{ order_prices[nomerzakaza] }} руб.</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="color:black; text-align: center;">Товар</th>
+                                <th style="color:black; text-align: center;">Размер</th>
+                                <th style="color:black; text-align: center;">Количество</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            <tr>
+                                <td>
+                                    <div style="color:black;">
+                                        <img class = "imgSize" src="{{ url_for('static', filename='img/' + order.tovar_name + '.jpg') }}" style="width: 200px; height: 150px;"  alt="img">
+                                        <span class="ml-2">{{ order.tovar_name }}</span>
+                                    </div>
+                                </td>
+
+                                <td style="color:black; text-align:center; vertical-align: middle;">
+                                    {{ order.tovar_size }}
+                                </td>
+                            
+                                <td style="color:black; text-align:center; vertical-align: middle;">
+                                    {{ order.tovar_quantity }}
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

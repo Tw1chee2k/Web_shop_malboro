@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Вход {% endblock %}
+{% block content %}
+<div class = "fon">
+  <div class="form-container">
+    <form method="POST" class="login-reg-box">
+      <h2 style="color: black; padding: 15px; margin: 0 5 0 0; text-align: center;">Войти</h2>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="Введите почту"
+      />
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        placeholder="Введите пароль"
+      />
+      
+      <div style = "text-align: center;">
+        <button type="submit" class = "custom-btn btn-16">Войти</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

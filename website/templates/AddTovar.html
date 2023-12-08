@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Добавление товара{% endblock %}
+{% block content %}
+<div class = "fon"> 
+  <div class="form-container" >
+    <form method="POST" class="login-reg-box">
+      <h2 style="color: black; padding: 15px; margin: 0 5 0 0; text-align: center;">Add Tovar</h2>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        placeholder="Enter name"
+      />
+      <input
+        type="text"
+        class="form-control"
+        id="cost"
+        name="cost"
+        placeholder="Enter cost"
+      />
+      <input
+        type="text"
+        class="form-control"
+        id="material"
+        name="material"
+        placeholder="Enter material"
+      />
+      <input
+        type="text"
+        class="form-control"
+        id="type_of_decoration"
+        name="type_of_decoration"
+        placeholder="Enter type of decoration"
+      />
+      <input
+        type="text"
+        class="form-control"
+        id="opisanie"
+        name="opisanie"
+        placeholder="Enter opisanie"
+      />
+      <div style = "text-align: center;">
+        <button type="submit" class = "custom-btn btn-16">Add</button>
+      </div>
+    </form>
+  </div>  
+</div>
+{% endblock %}

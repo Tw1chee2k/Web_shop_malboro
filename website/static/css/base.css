@@ -1,0 +1,618 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sometype+Mono:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+
+html{
+  margin: 0;
+  color:black;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(226, 239, 247); 
+  min-height: 100%;
+  font-family: Poppins, sans-serif;
+  color: white;
+}
+
+/*-----------------------header*/
+
+.fixed-header {
+  color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: left;
+  z-index: 2;
+  background-color: rgb(255, 255, 255); 
+}
+
+.store-name {
+  font-size: 25px; 
+  margin-right: 60px; 
+  color: #333; 
+  font-weight: bold; 
+  text-transform: uppercase;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 15px;
+  margin: 15px 50px 15px 50px;
+}
+
+#menu-button {
+  display: none;
+}
+
+.left-content {
+  display: flex;
+  align-items: center;
+}
+
+.right-content {
+  display: flex;
+  align-items: center;
+}
+
+.header-content nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.header-content .left-content nav li {
+  margin: 0 40px 0 0;
+}
+
+.header-content .right-content nav li {
+  margin: 0;
+}
+
+/*-----------------------header end*/
+
+/*-----------------------catalog */
+
+main {
+  flex-grow: 1;
+  min-height: calc(300vh - 93px);
+  width: 100%;  
+}
+
+.tovar_box {
+  position: relative;
+  width: 300px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.26);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tovar_box img {
+  width: 150px;
+  height: 150px; 
+  
+}
+
+.tovar_box > div:last-child {
+  padding: 10px 20px;
+  color: black;
+  text-align: center;
+}
+
+#blackContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(226, 239, 247); 
+  font-family: Poppins, sans-serif;
+}
+
+/*-----------------------catalog end */
+
+/* --------------------------------button */
+
+.custom-btn {
+  width: 170px;
+  height: 60px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.btn-16 {
+  border: none;
+  color: #000;
+  z-index: 1;
+}
+.btn-16:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+.btn-16:hover {
+  color: #000;
+}
+.btn-16:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+.btn-16:active {
+  top: 2px;
+}
+
+/* --------------------------------button end*/
+
+/* --------------------------------log_and_reg*/
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;  
+}
+
+.login-reg-box {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.397);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 2px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] 
+{
+  align-items: center;
+  width: 100%;
+  height: 45px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.table-dark td, .table-dark th, .table-dark thead th {
+  border: 2px;
+  border: white;
+}
+
+/* --------------------------------log_and_reg end*/
+
+/* --------------------------------tovara*/
+
+.contProd {
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
+  height: 100%;
+  margin: auto;
+}
+
+.imgPrCont {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.productIMG {
+  margin-bottom: 10px;
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  position: relative;
+}
+
+.Opis {
+  padding-left: 40px;
+  padding-top: 20px;
+  width: 50%;
+  height: 100%;
+}
+
+.Opis.name{
+  text-align: center;
+}
+
+.mainT{
+  text-align: justify;
+  color: black;
+  font-size: 16px;
+  padding-top: 11px;
+}
+
+.inoeT{
+  text-align: justify;
+  color: rgb(131, 131, 131);
+}
+
+.plus_minus_count{
+  background-color: rgb(226, 239, 247); 
+  color: black; 
+  border: 1px solid gray;
+  width: 30px; 
+  height: 30px;  
+  cursor: pointer;
+}
+
+/* --------------------------------vibor_razmera_obyvi*/
+
+.size-button {
+  width: 40px;
+  height: 40px;
+  margin: 7px 7px 0 0;
+  border: 1.3px solid gray;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  line-height: 40px;
+  background-color: rgb(226, 239, 247); 
+  outline: none;
+}
+
+.selected {
+  background-color: #28cbff;
+  color: white;
+}
+
+/* --------------------------------vibor_razmera_obyvi_end*/
+
+
+/* --------------------------------tovara end*/
+
+/* --------------------------------basket*/
+
+.contbasket {
+  display: flex;
+  flex-direction: space-between;
+  height: 100%;
+  margin: auto;
+}
+
+.OpisB1 {
+  height: 100%;
+  width: 80%;
+  padding: 0 50px 0 120px;
+}
+
+.OpisB2 {
+  width: 100%;
+  height: 100%;
+  padding: 0 120px 0 120px;
+}
+
+.Opis.name{
+  text-align: center;
+}
+
+.contradio {
+  display: flex;
+  align-items: center;
+}
+
+.input_for_quent{
+  background-color: black; 
+  color: white; 
+  border: black; 
+  width: 40px; 
+  height: 30px; 
+  text-align: center; 
+  margin-bottom: 0px; 
+  font-size: 16px; 
+  text-align: center; 
+  vertical-align: middle;
+}
+
+.contradio input {
+  margin-right: 10px;
+}
+
+.basketCostContener {
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  color: white;
+  padding: 20px;
+  font-size: 16px;
+}
+
+/* --------------------------------basket end*/
+
+/* --------------------------------my orders*/
+
+.imgSize{
+  width: 40%; 
+  height: 40%;
+}
+
+/* --------------------------------my orders end*/
+
+/* main end*/
+
+/*-----------------------footeeer*/
+
+footer {
+  color: black;
+  z-index: 1;
+  margin-top: auto;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  height: 93px;
+  font-size: 15px;
+  width: 100%;
+}
+
+.fot_cont_text{
+  display: flex; 
+  gap: 10px;
+  margin: 15px;
+  padding-left: 50px;
+}
+
+.fot_cont_text div{
+  padding: 20px;
+}
+
+.fot_cont_img{
+  display: flex;
+  gap: 10px;
+  padding-right: 50px;
+}
+
+.fot_cont_img a{
+  padding: 10px;
+}
+
+/*-----------------------footeeer end*/
+
+/*-----------------------mes*/
+
+.custom-alert {  
+  position: fixed;
+  top: 100px;
+  max-width: 400px; 
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  z-index: 100;
+  right: 10px; 
+}
+
+.alert-danger {
+  background-color: #ff9999;
+  color: #ff0000;
+}
+
+.alert-success {
+  background-color: #99ff99;
+  color: #008000;
+}
+
+/*-----------------------mes end*/
+
+@media (max-width: 450px) {
+  .form-container {
+    padding: 30px;
+  }
+}
+
+  @media (max-width: 670px) {
+    .header-content {
+      margin: 10px 40px 10px 40px;
+    }
+  
+    #SortContainer {
+      justify-content: flex-start; /* Изменено на flex-start для выравнивания слева */
+      margin: 0 auto;
+      flex-wrap: nowrap;
+    }
+  
+  
+    .productIMG {
+      width: 100%;
+    }
+  }
+
+@media (max-width: 1240px) {
+  .left-content nav ul {
+    display: none;
+  }
+
+  .left-content nav ul li{
+
+    padding-top: 10px;
+  }
+  
+  #menu-button {
+    display: block;
+  }
+
+  .contProd {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+  }
+  
+  .imgPrCont {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+    
+  .scroll-container1 {
+    display: inline-block; 
+  }
+  
+  .productIMG {
+    width: 60%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .Opis {
+    padding: 50px;
+    width: 100%;
+  }
+  
+  .Opis.name {
+    text-align: center;
+  }
+  
+  .mainT {
+    text-align: justify;
+    color: white;
+    font-size: 16px;
+    padding-top: 11px;
+  }
+  
+  .inoeT {
+    text-align: justify;
+    color: rgb(131, 131, 131);
+  }
+
+  .imgSize{
+    width: 70%; 
+    height: 70%;
+  }
+
+  .contbasket {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    height: 100%;
+    margin: auto;
+  }
+  
+  .OpisB1 {
+    width: 100%; 
+    padding: 0 20px 100px 20px;
+  }
+  
+  .OpisB2 {
+    width: 100%;
+    padding: 0 20px;
+  }
+  .OpisB1  h2{
+    text-align: center;
+  }
+  .OpisB2  h2{
+    text-align: center;
+  }
+  
+  .Opis.name {
+    text-align: center;
+  }
+  
+  .contradio {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10px 0;
+  }
+  
+  .contradio input {
+    margin-right: 10px;
+  }
+  
+  .basketCostContener {
+    width: 100%;
+    text-align: center; 
+    color: white;
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+    position: relative;
+  }
+
+  .fot_cont_text{
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px;
+    margin: 15px;
+    padding-left: 0px;
+  }
+
+  .fot_cont_text div{
+    padding: 5px;
+  }
+
+  .fot_cont_img{
+    display: flex;
+    gap: 10px;
+    padding-right: 0px;
+  }
+
+  .fot_cont_img a{
+    padding: 10px;
+  }
+
+  main {
+    min-height: 500vb;
+  }
+}
+
+
+
+
+
